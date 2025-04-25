@@ -6,9 +6,18 @@ using UnityEngine;
 
 public class PlayerNetwork : NetworkBehaviour
 {
+
+    private NetworkVariable<int> randomNumber = new NetworkVariable<int>(1);
     private void Update()
     {
+        Debug.Log(OwnerClientId + "; " + randomNumber.Value);
+
         if (!IsOwner) return;
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            randomNumber.Value = Random.Range(0, 100);
+        }
 
         Vector3 moveDir = new Vector3(0, 0, 0);
 
