@@ -26,6 +26,7 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private Button HostGameBtn;
     [SerializeField] private Button JoinGameBtn;
     [SerializeField] private TMP_InputField JoinCodeInputField;
+    [SerializeField] private TMP_Text joinCodeDisplay;
 
     private async void Awake()
     {
@@ -71,6 +72,8 @@ public class NetworkManagerUI : MonoBehaviour
 
             var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
             transport.SetRelayServerData(new RelayServerData(allocation, "dtls"));
+
+            joinCodeDisplay.text = "Join Code: " + joinCode;
 
             NetworkManager.Singleton.StartHost();
         }
