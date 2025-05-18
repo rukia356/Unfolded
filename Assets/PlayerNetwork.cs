@@ -12,6 +12,8 @@ public class PlayerNetwork : NetworkBehaviour
     
     private Transform spawnedObjectTransform;
 
+    private Camera playerCamera;
+
     private NetworkVariable<CustomData> randomNumber = new NetworkVariable<CustomData>(
         new CustomData
         {
@@ -39,6 +41,15 @@ public class PlayerNetwork : NetworkBehaviour
         {
             Debug.Log(OwnerClientId + ";  " + newValue._int + "; " + newValue._bool + "; " + newValue.message);
         };
+
+        if (IsOwner)
+        {
+            playerCamera = GetComponentInChildren<Camera>();
+            if (playerCamera != null)
+            {
+                playerCamera.enabled = true;
+            }
+        }
     }
 
     private void Update()
@@ -94,59 +105,59 @@ public class PlayerNetwork : NetworkBehaviour
         Debug.Log("TestClientRpc");
     }
 
-
-    //private float moveSpeed = 3f;
-    //private float sprintSpeed = 6f;
-    //private float crouchSpeed = 1.5f;
-    //private float jumpForce = 5f;
-    //private float gravity = -9.81f;
-    //private float verticalVelocity = 0f;
-    //private bool isGrounded = false;
-
-    //[SerializeField] private Transform groundCheck;
-    //[SerializeField] private float groundCheckDistance = 0.2f;
-    //[SerializeField] private LayerMask groundMask;
-
-    //private void Update()
-    //{
-    //    if (!IsOwner) return;
-
-    //    HandleMovement();
-    //}
-
-    //private void HandleMovement()
-    //{
-    //    // --- Ground Check ---
-    //    isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
-
-    //    if (isGrounded && verticalVelocity < 0)
-    //        verticalVelocity = -2f; // Keeps grounded
-
-    //    // --- Input ---
-    //    Vector3 moveDir = Vector3.zero;
-
-    //    if (Input.GetKey(KeyCode.W)) moveDir += transform.forward;
-    //    if (Input.GetKey(KeyCode.S)) moveDir -= transform.forward;
-    //    if (Input.GetKey(KeyCode.A)) moveDir -= transform.right;
-    //    if (Input.GetKey(KeyCode.D)) moveDir += transform.right;
-
-    //    moveDir.Normalize();
-
-    //    float currentSpeed = moveSpeed;
-    //    if (Input.GetKey(KeyCode.LeftShift)) currentSpeed = sprintSpeed;
-    //    else if (Input.GetKey(KeyCode.LeftControl)) currentSpeed = crouchSpeed;
-
-    //    // --- Jump ---
-    //    if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-    //        verticalVelocity = Mathf.Sqrt(jumpForce * -2f * gravity);
-
-    //    // --- Apply Gravity ---
-    //    verticalVelocity += gravity * Time.deltaTime;
-
-    //    // Final move vector
-    //    Vector3 finalMove = moveDir * currentSpeed;
-    //    finalMove.y = verticalVelocity;
-
-    //    transform.position += finalMove * Time.deltaTime;
-    //}
 }
+
+//private float moveSpeed = 3f;
+//private float sprintSpeed = 6f;
+//private float crouchSpeed = 1.5f;
+//private float jumpForce = 5f;
+//private float gravity = -9.81f;
+//private float verticalVelocity = 0f;
+//private bool isGrounded = false;
+
+//[SerializeField] private Transform groundCheck;
+//[SerializeField] private float groundCheckDistance = 0.2f;
+//[SerializeField] private LayerMask groundMask;
+
+//private void Update()
+//{
+//    if (!IsOwner) return;
+
+//    HandleMovement();
+//}
+
+//private void HandleMovement()
+//{
+//    // --- Ground Check ---
+//    isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
+
+//    if (isGrounded && verticalVelocity < 0)
+//        verticalVelocity = -2f; // Keeps grounded
+
+//    // --- Input ---
+//    Vector3 moveDir = Vector3.zero;
+
+//    if (Input.GetKey(KeyCode.W)) moveDir += transform.forward;
+//    if (Input.GetKey(KeyCode.S)) moveDir -= transform.forward;
+//    if (Input.GetKey(KeyCode.A)) moveDir -= transform.right;
+//    if (Input.GetKey(KeyCode.D)) moveDir += transform.right;
+
+//    moveDir.Normalize();
+
+//    float currentSpeed = moveSpeed;
+//    if (Input.GetKey(KeyCode.LeftShift)) currentSpeed = sprintSpeed;
+//    else if (Input.GetKey(KeyCode.LeftControl)) currentSpeed = crouchSpeed;
+
+//    // --- Jump ---
+//    if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+//        verticalVelocity = Mathf.Sqrt(jumpForce * -2f * gravity);
+
+//    // --- Apply Gravity ---
+//    verticalVelocity += gravity * Time.deltaTime;
+
+//    // Final move vector
+//    Vector3 finalMove = moveDir * currentSpeed;
+//    finalMove.y = verticalVelocity;
+
+//    transform.position += finalMove * Time.deltaTime;
+//}

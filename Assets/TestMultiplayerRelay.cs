@@ -18,25 +18,72 @@ using Unity.Networking.Transport.Relay;
 public class TestMultiplayerRelay : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     private async void Start()
     {
-        await UnityServices.InitializeAsync();
-
-        if (AuthenticationService.Instance.IsSignedIn)
+        try
         {
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            //await AuthenticationService.Instance.SignInWithEmailAsync(email, password);
-            Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+            if (UnityServices.State != ServicesInitializationState.Initialized)
+            {
+                await UnityServices.InitializeAsync();
+            }
+
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                bool signingIn = true;
+                Debug.Log("Waiting for sign-in...");
+
+                AuthenticationService.Instance.SignedIn += () =>
+                {
+                    signingIn = false;
+                    Debug.Log("Signed in successfully.");
+                };
+
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+                // Optional: wait until sign-in completes
+                float timeout = 5f;
+                while (signingIn && timeout > 0)
+                {
+                    await System.Threading.Tasks.Task.Delay(100);
+                    timeout -= 0.1f;
+                }
+
+                if (!AuthenticationService.Instance.IsSignedIn)
+                {
+                    Debug.LogError("Failed to sign in.");
+                    return;
+                }
+            }
+
+            Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
+            await CreateRelayAndJoin();
         }
-
-        await CreateRelayAndJoin();
-        //AuthenticationService.Instance.SignedIn += () =>
-        //{
-        //    Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
-        //};
-
-        //await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        catch (Exception e)
+        {
+            Debug.LogError("Start() error: " + e.Message);
+        }
     }
+
+    //private async void Start()
+    //{
+    //    await UnityServices.InitializeAsync();
+
+    //    if (AuthenticationService.Instance.IsSignedIn)
+    //    {
+    //        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    //        //await AuthenticationService.Instance.SignInWithEmailAsync(email, password);
+    //        Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+    //    }
+
+    //    await CreateRelayAndJoin();
+    //    //AuthenticationService.Instance.SignedIn += () =>
+    //    //{
+    //    //    Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+    //    //};
+
+    //    //await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    //}
 
     private async System.Threading.Tasks.Task CreateRelayAndJoin()
     {
