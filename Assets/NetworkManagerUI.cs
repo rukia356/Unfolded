@@ -101,6 +101,9 @@ public class NetworkManagerUI : MonoBehaviour
         {
             Debug.LogError(e);
         }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
 

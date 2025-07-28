@@ -8,6 +8,12 @@ using UnityEngine;
 public class PlayerNetwork : NetworkBehaviour
 {
 
+    public float speed = 5f;
+    public CharacterController controller;
+    //public Transform cam;
+    public Camera cam;
+
+
     [SerializeField] private Transform spawnedObjectPrefab;
     
     private Transform spawnedObjectTransform;
@@ -78,6 +84,15 @@ public class PlayerNetwork : NetworkBehaviour
             // spawnedObjectTransform.GetComponent<NetworkObject>().Despawn(true);
         }
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 10f;  
+        }
+        else
+        {
+            speed = 5f;   
+        }
+
         Vector3 moveDir = new Vector3(0, 0, 0);
 
         if (Input.GetKey(KeyCode.W))moveDir.z = +1f;
@@ -85,10 +100,11 @@ public class PlayerNetwork : NetworkBehaviour
         if (Input.GetKey(KeyCode.A)) moveDir.x = -1f;
         if (Input.GetKey(KeyCode.D)) moveDir.x = +1f;
 
-        if (Input.GetKey(KeyCode.Space)) moveDir.y = +1f;
+        //if (Input.GetKey(KeyCode.Space)) moveDir.y = +1f;
 
-        float moveSpeed = 3f;
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        //float moveSpeed = 3f;
+        //transform.position += moveDir * moveSpeed * Time.deltaTime;
+        transform.position += moveDir * speed * Time.deltaTime;
 
     }
 
