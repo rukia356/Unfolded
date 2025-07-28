@@ -57,7 +57,7 @@ public class TestMultiplayerRelay : MonoBehaviour
             }
 
             Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
-            await CreateRelayAndJoin();
+            //await CreateRelayAndJoin();
         }
         catch (Exception e)
         {
