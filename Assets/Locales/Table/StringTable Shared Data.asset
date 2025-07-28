@@ -31,6 +31,14 @@ MonoBehaviour:
     m_Key: CodeKey
     m_Metadata:
       m_Items: []
+  - m_Id: 22912074648780800
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22912079648391168
+    m_Key: New Entry 1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

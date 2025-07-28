@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: aa122848dbcbfcc488b496497aab56d8, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 1958733332970471683
   m_TableData:
   - m_Id: 41708290048
     m_Localized: 'Join code:'
@@ -34,6 +35,17 @@ MonoBehaviour:
     m_Localized: Join Game (add code)
     m_Metadata:
       m_Items: []
+  - m_Id: 22912079648391168
+    m_Localized: 
+    m_Metadata:
+      m_Items:
+      - rid: 1958733332970471683
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1958733332970471683
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 22912079648391168

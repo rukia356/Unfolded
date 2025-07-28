@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: fi
   m_SharedData: {fileID: 11400000, guid: aa122848dbcbfcc488b496497aab56d8, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 1958733332970471684
   m_TableData:
   - m_Id: 41708290048
     m_Localized: 'Liittysmisavain: '
@@ -34,6 +35,17 @@ MonoBehaviour:
     m_Localized: "Liity Peliin (lis\xE4\xE4 koodi)"
     m_Metadata:
       m_Items: []
+  - m_Id: 22912079648391168
+    m_Localized: 
+    m_Metadata:
+      m_Items:
+      - rid: 1958733332970471684
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1958733332970471684
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 22912079648391168
