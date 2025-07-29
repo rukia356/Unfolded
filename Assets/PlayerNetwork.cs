@@ -48,12 +48,31 @@ public class PlayerNetwork : NetworkBehaviour
             Debug.Log(OwnerClientId + ";  " + newValue._int + "; " + newValue._bool + "; " + newValue.message);
         };
 
+        //if (IsOwner)
+        //{
+        //    playerCamera = GetComponentInChildren<Camera>();
+        //    if (playerCamera != null)
+        //    {
+        //        playerCamera.enabled = true;
+        //    }
+        //}
+
+        playerCamera = GetComponentInChildren<Camera>();
+
         if (IsOwner)
         {
-            playerCamera = GetComponentInChildren<Camera>();
             if (playerCamera != null)
             {
                 playerCamera.enabled = true;
+                playerCamera.GetComponent<AudioListener>().enabled = true;
+            }
+        }
+        else
+        {
+            if (playerCamera != null)
+            {
+                playerCamera.enabled = false;
+                playerCamera.GetComponent<AudioListener>().enabled = false;
             }
         }
     }
