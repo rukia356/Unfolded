@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 
 public class ButtonScript : MonoBehaviour 
@@ -6,6 +7,8 @@ public class ButtonScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!NetworkManager.Singleton.IsServer) return;
+
         if (other.CompareTag("Player"))
         {
             Debug.Log("Button pressed by: " + other.name);
