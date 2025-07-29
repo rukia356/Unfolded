@@ -58,6 +58,9 @@ public class PlayerNetwork : NetworkBehaviour
         }
     }
 
+    private Vector3 velocity;
+    public float gravity = -9.81f;
+
     private void Update()
     {
         if (!IsOwner) return;
@@ -84,14 +87,16 @@ public class PlayerNetwork : NetworkBehaviour
             // spawnedObjectTransform.GetComponent<NetworkObject>().Despawn(true);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = 10f;  
-        }
-        else
-        {
-            speed = 5f;   
-        }
+        //if (Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    speed = 10f;  
+        //}
+        //else
+        //{
+        //    speed = 5f;   
+        //}
+
+        speed = Input.GetKey(KeyCode.LeftShift) ? 10f : 5f;
 
         Vector3 moveDir = new Vector3(0, 0, 0);
 
@@ -104,7 +109,18 @@ public class PlayerNetwork : NetworkBehaviour
 
         //float moveSpeed = 3f;
         //transform.position += moveDir * moveSpeed * Time.deltaTime;
-        transform.position += moveDir * speed * Time.deltaTime;
+        //transform.position += moveDir * speed * Time.deltaTime;
+
+        // gravity test
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // Small downward force to stick to ground
+        }
+        velocity.y += gravity * Time.deltaTime;
+
+        Vector3 finalMove = moveDir.normalized * speed + velocity;
+
+        controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
     }
 
