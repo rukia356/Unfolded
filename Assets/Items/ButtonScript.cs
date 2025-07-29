@@ -1,0 +1,27 @@
+using UnityEngine;
+
+public class ButtonScript : MonoBehaviour 
+{
+    public bool isPressed = false;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Button pressed by: " + other.name);
+            isPressed = true;
+            Debug.Log(gameObject.name + " pressed button");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Button not pressed by: " + other.name);
+            isPressed = false;
+            Debug.Log(gameObject.name + " released button");
+        }
+    }
+
+}
