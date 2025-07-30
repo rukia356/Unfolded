@@ -5,9 +5,12 @@ public class ButtonScript : MonoBehaviour
 {
     public bool isPressed = false;
 
+    [SerializeField] private PuzzleManager puzzleManager;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!NetworkManager.Singleton.IsServer) return;
+        //if (!NetworkManager.Singleton.IsServer) return;
+        if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsServer) return;
 
         if (other.CompareTag("Player"))
         {
