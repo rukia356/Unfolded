@@ -22,16 +22,34 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private Button HostBtn;
     [SerializeField] private Button ClientBtn;
 
+    [Header("Win Screen")]
+    [SerializeField] private GameObject winScreenPanel;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button quitButton;
+
     [Header("Relay UI")]
     [SerializeField] private Button HostGameBtn;
     [SerializeField] private Button JoinGameBtn;
     [SerializeField] private TMP_InputField JoinCodeInputField;
     [SerializeField] private TMP_Text joinCodeDisplay;
 
+
+
     private async void Awake()
     {
         await UnityServices.InitializeAsync();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+        restartButton.onClick.AddListener(() =>
+        {
+            Time.timeScale = 1f;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        });
+
+        quitButton.onClick.AddListener(() =>
+        {
+            Application.Quit();
+        });
 
         ServerBtn.onClick.AddListener(() =>
         {
@@ -104,6 +122,12 @@ public class NetworkManagerUI : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void ShowWinScreen()
+    {
+        winScreenPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
 

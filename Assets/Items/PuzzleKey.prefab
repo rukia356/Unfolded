@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7078732980416046695}
   - component: {fileID: 8585175558514407576}
-  - component: {fileID: 3177261333853242594}
   - component: {fileID: 897199248958340842}
+  - component: {fileID: 3177261333853242594}
   - component: {fileID: -8673245382687509287}
   m_Layer: 0
   m_Name: PuzzleKey
@@ -57,18 +57,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.56794167, z: 0.9421387}
   m_Center: {x: 0, y: 0.030179024, z: -0.028930664}
---- !u!114 &3177261333853242594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6654019497212960875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abbda432ca3cc11479097d03003605eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &897199248958340842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +82,19 @@ MonoBehaviour:
   AutoObjectParentSync: 0
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &3177261333853242594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654019497212960875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abbda432ca3cc11479097d03003605eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &-8673245382687509287
 MonoBehaviour:
   m_ObjectHideFlags: 0

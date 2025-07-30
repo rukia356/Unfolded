@@ -20,6 +20,14 @@ public class PlayerNetwork : NetworkBehaviour
 
     private Camera playerCamera;
 
+    public NetworkVariable<bool> hasKey = new NetworkVariable<bool>(false);
+
+    [ServerRpc]
+    public void GiveKeyServerRpc()
+    {
+        hasKey.Value = true;
+    }
+
     private NetworkVariable<CustomData> randomNumber = new NetworkVariable<CustomData>(
         new CustomData
         {

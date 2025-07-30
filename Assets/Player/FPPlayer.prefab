@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: -6995054724895660479}
   - component: {fileID: 193318758448325311}
   - component: {fileID: 8271172832073836691}
+  - component: {fileID: -7793735407578737089}
   m_Layer: 0
   m_Name: FPPlayer
   m_TagString: Player
@@ -345,6 +346,8 @@ MonoBehaviour:
   controller: {fileID: 448138849745925459}
   cam: {fileID: 6313560466897601982}
   spawnedObjectPrefab: {fileID: 3121197531638702756, guid: 8b33e447047c99e488e16f09988b7604, type: 3}
+  hasKey:
+    m_InternalValue: 0
   gravity: -9.81
 --- !u!114 &7995386894666344452
 MonoBehaviour:
@@ -459,3 +462,18 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &-7793735407578737089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146521896578004289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f35af7efdc2caf4cadc20926aedbd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  HasKey:
+    m_InternalValue: 0
