@@ -36,10 +36,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22912079648391168
-    m_Localized: 
+    m_Localized: "K\xE4ytt\xE4j\xE4nimi:"
     m_Metadata:
       m_Items:
       - rid: 1958733332970471684
+  - m_Id: 22912074648780800
+    m_Localized: "Kirjaudu tai Rekister\xF6idy:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23991068378923008
+    m_Localized: 'Salasana:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23991117536165888
+    m_Localized: Kirjaudu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23991167947505664
+    m_Localized: "Rekister\xF6idy"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
