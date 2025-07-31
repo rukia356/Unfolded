@@ -56,6 +56,14 @@ MonoBehaviour:
     m_Localized: "Rekister\xF6idy"
     m_Metadata:
       m_Items: []
+  - m_Id: 23999501824032768
+    m_Localized: tosi hieno ovi (tarvitsee avaimen)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23999623387545600
+    m_Localized: Paina E
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

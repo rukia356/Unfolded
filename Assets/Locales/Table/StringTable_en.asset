@@ -56,6 +56,14 @@ MonoBehaviour:
     m_Localized: Register
     m_Metadata:
       m_Items: []
+  - m_Id: 23999501824032768
+    m_Localized: very cool door (requires key to open)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23999623387545600
+    m_Localized: Press E
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
