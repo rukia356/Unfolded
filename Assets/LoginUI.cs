@@ -33,11 +33,17 @@ public class LoginUI : MonoBehaviour
 
             await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(
             usernameField.text, passwordField.text);
+            
             Debug.Log("Login successful!");
+
+            await AuthenticationService.Instance.UpdatePlayerNameAsync(usernameField.text);
 
             multiplayerUI.SetActive(true);  // show multiplayer menu
             //gameObject.SetActive(false);    // hide login panel
             loginPanel.SetActive(false);
+
+            
+
         }
         catch (AuthenticationException ex)
         {
