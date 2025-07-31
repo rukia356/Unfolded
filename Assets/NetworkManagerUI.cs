@@ -38,7 +38,7 @@ public class NetworkManagerUI : MonoBehaviour
     private async void Awake()
     {
         await UnityServices.InitializeAsync();
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        //await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
         restartButton.onClick.AddListener(() =>
         {
