@@ -13,6 +13,7 @@ public class LoginUI : MonoBehaviour
     [SerializeField] private Button registerButton;
     [SerializeField] private GameObject multiplayerUI; // Panel with Host/Join buttons
     [SerializeField] private GameObject loginPanel;
+    [SerializeField] private GameObject colorPanel;
 
     private async void Start()
     {
@@ -41,8 +42,9 @@ public class LoginUI : MonoBehaviour
             multiplayerUI.SetActive(true);  // show multiplayer menu
             //gameObject.SetActive(false);    // hide login panel
             loginPanel.SetActive(false);
+            //colorPanel.SetActive(true);
 
-            
+
 
         }
         catch (AuthenticationException ex)

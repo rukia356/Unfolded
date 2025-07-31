@@ -33,6 +33,8 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private TMP_InputField JoinCodeInputField;
     [SerializeField] private TMP_Text joinCodeDisplay;
 
+    //[SerializeField] private GameObject colorPanel;
+
 
 
     private async void Awake()
@@ -69,12 +71,14 @@ public class NetworkManagerUI : MonoBehaviour
         HostGameBtn.onClick.AddListener(async () =>
         {
             await CreateRelay();
+            //colorPanel.SetActive(true);
         });
 
         JoinGameBtn.onClick.AddListener(async () =>
         {
             string joinCode = JoinCodeInputField.text;
             await JoinRelay(joinCode);
+            //colorPanel.SetActive(true);
         });
     }
 
@@ -94,6 +98,8 @@ public class NetworkManagerUI : MonoBehaviour
             joinCodeDisplay.text = "Join Code: " + joinCode;
 
             NetworkManager.Singleton.StartHost();
+
+            
         }
         catch (Unity.Services.Relay.RelayServiceException e)
         {
@@ -114,6 +120,8 @@ public class NetworkManagerUI : MonoBehaviour
             transport.SetRelayServerData(new RelayServerData(allocation, "dtls"));
 
             NetworkManager.Singleton.StartClient();
+
+            
         }
         catch (Unity.Services.Relay.RelayServiceException e)
         {
